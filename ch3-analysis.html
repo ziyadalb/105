@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>احص 105 · الفصل الثالث</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap">
+<style>
+:root{
+  /* Layout: one RTL reading column (~46rem). Cards only for questions and callouts; tables and long formulas scroll inside their own box. */
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#16202a; --muted:#566271; --line:#d9e0e7; --line-strong:#b3bfcb;
+  --accent:#0a6a86; --accent-ink:#ffffff; --accent-soft:#dcedf3;
+  --hl:#fff0a0;
+  --warn:#8f5208; --warn-soft:#fcefd9; --bad:#ab2b22; --bad-soft:#fbe6e4; --good:#1a6c44; --good-soft:#e0f1e7;
+  --font-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
+  --font-head:"Readex Pro","IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1217; --surface:#141b22; --ink:#e4e9ef; --muted:#9ba7b5; --line:#25303a; --line-strong:#3c4956;
+    --accent:#5bbdd8; --accent-ink:#04222c; --accent-soft:#122f39;
+    --hl:#4a4215;
+    --warn:#efab55; --warn-soft:#342610; --bad:#f08b83; --bad-soft:#3a1c1a; --good:#68cf9c; --good-soft:#132e21;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1217; --surface:#141b22; --ink:#e4e9ef; --muted:#9ba7b5; --line:#25303a; --line-strong:#3c4956;
+  --accent:#5bbdd8; --accent-ink:#04222c; --accent-soft:#122f39;
+  --hl:#4a4215;
+  --warn:#efab55; --warn-soft:#342610; --bad:#f08b83; --bad-soft:#3a1c1a; --good:#68cf9c; --good-soft:#132e21;
+  color-scheme:dark;
+}
+body{ background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.85; }
+.page{ max-width:46rem; margin:0 auto; padding-block:28px 72px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+h1,h2,h3{ font-family:var(--font-head); line-height:1.4; text-wrap:balance; margin:0; color:var(--ink); }
+h1{ font-size:2.15rem; font-weight:700; }
+h2{ font-size:1.42rem; font-weight:600; }
+h3{ font-size:1.06rem; font-weight:600; }
+p{ margin:0; }
+a{ color:var(--accent); }
+a:focus-visible, button:focus-visible, summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+b{ font-weight:600; }
+
+/* math islands: always LTR, isolated from Arabic bidi */
+.katex{ direction:ltr; unicode-bidi:isolate; display:inline-block; font-size:1.06em; }
+math{ direction:ltr; }
+.katex-display{ display:block; overflow-x:auto; overflow-y:hidden; text-align:center; padding-block:4px; margin-block:2px; }
+.katex-display > .katex{ font-size:1.12em; }
+.steps .katex-display{ text-align:start; }
+@media (max-width:480px){
+  table.formulas{ min-width:0; font-size:.84rem; }
+  table.formulas th, table.formulas td{ padding:8px 5px; }
+  table.formulas th{ white-space:normal; }
+}
+.opts span{ display:inline-block; white-space:nowrap; font-variant-numeric:tabular-nums; border:1px solid var(--line); border-radius:6px; padding:0 7px; margin-block:2px; margin-inline-end:4px; }
+
+/* hero */
+.eyebrow{ font:600 .82rem/1.4 var(--font-head); letter-spacing:.04em; color:var(--accent); }
+.hero{ display:flex; flex-direction:column; gap:14px; padding-bottom:8px; }
+.lead{ color:var(--muted); font-size:1.02rem; max-width:40rem; }
+.hero-grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:6px; }
+@media (min-width:640px){ .hero-grid{ grid-template-columns:1.1fr 1fr; align-items:stretch; } }
+.stats{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0; }
+.stats > div{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:10px 14px; min-width:0; }
+.stats dt{ font-size:.82rem; color:var(--muted); }
+.stats dd{ margin:0; font:700 1.5rem/1.3 var(--font-head); font-variant-numeric:tabular-nums; }
+.stats dd small{ font:500 .85rem var(--font-body); color:var(--muted); }
+.stats .gap dd{ color:var(--bad); }
+.bell-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px 10px; display:flex; flex-direction:column; gap:6px; min-width:0; }
+.bell{ width:100%; height:auto; max-width:100%; direction:ltr; }
+.bell-area{ fill:var(--accent-soft); }
+.bell-line{ stroke:var(--accent); stroke-width:2.2; }
+.bell-axis{ stroke:var(--line-strong); stroke-width:1; }
+.bell-mark{ stroke:var(--accent); stroke-width:1.4; stroke-dasharray:3 3; }
+.bell-tick{ fill:var(--muted); font:500 11px var(--font-body); }
+.bell-tick-strong{ fill:var(--ink); font-weight:600; }
+.bell-val{ fill:var(--accent); font:700 15px var(--font-head); }
+.cap{ font-size:.85rem; color:var(--muted); }
+
+/* sections */
+section{ display:flex; flex-direction:column; gap:14px; padding-top:40px; scroll-margin-top:12px; }
+.sec-head{ display:flex; flex-direction:column; gap:2px; }
+.sec-head .eyebrow{ color:var(--muted); }
+.muted{ color:var(--muted); }
+.small{ font-size:.9rem; }
+
+/* tl;dr */
+.tldr{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; }
+.tldr ol{ margin:0; padding-inline-start:1.3rem; display:flex; flex-direction:column; gap:10px; }
+.tldr li::marker{ color:var(--accent); font-weight:700; }
+
+/* toc */
+.toc{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; margin:0; padding:0; list-style:none; }
+@media (min-width:640px){ .toc{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+.toc a{ display:block; text-decoration:none; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 12px; font-size:.92rem; }
+.toc a:hover{ border-color:var(--accent); color:var(--accent); }
+
+/* tables */
+.tbl{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); }
+table{ border-collapse:collapse; width:100%; font-size:.93rem; }
+th, td{ padding:9px 12px; text-align:start; vertical-align:middle; border-bottom:1px solid var(--line); }
+tbody tr:last-child td{ border-bottom:0; }
+th{ font:600 .82rem/1.4 var(--font-head); color:var(--muted); background:var(--bg); white-space:nowrap; }
+table.cover{ min-width:520px; }
+.yes{ color:var(--good); font-weight:600; white-space:nowrap; }
+.no{ color:var(--bad); font-weight:600; white-space:nowrap; }
+.pill{ display:inline-block; padding:1px 10px; border-radius:999px; font-size:.8rem; font-weight:600; white-space:nowrap; }
+.pill.high{ background:var(--bad-soft); color:var(--bad); }
+.pill.mid{ background:var(--warn-soft); color:var(--warn); }
+.pill.low{ background:var(--bg); color:var(--muted); border:1px solid var(--line); }
+table.formulas{ min-width:460px; }
+table.formulas td{ text-align:center; }
+table.formulas td:first-child{ font-weight:600; }
+.mark-row td{ background:color-mix(in srgb, var(--hl) 55%, transparent); }
+
+/* callouts */
+.callout{ border-radius:var(--radius); padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
+.callout.info{ background:var(--accent-soft); }
+.callout.warn{ background:var(--warn-soft); }
+.callout.warn .callout-title{ color:var(--warn); }
+.callout.info .callout-title{ color:var(--accent); }
+.callout-title{ font:600 .95rem/1.4 var(--font-head); }
+.callout ul{ margin:0; padding-inline-start:1.2rem; display:flex; flex-direction:column; gap:6px; }
+
+/* the one rule */
+.hl{ background:var(--hl); border-radius:4px; padding:0 .25em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.rules{ display:flex; flex-direction:column; gap:10px; margin:0; padding:0; list-style:none; }
+.rules li{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:10px 14px; }
+.rules .r-name{ font:600 .9rem var(--font-head); color:var(--accent); display:block; }
+
+/* decision tree */
+.tree{ display:flex; flex-direction:column; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; }
+.tree .row{ display:grid; grid-template-columns:1fr; gap:4px 16px; padding:11px 14px; border-bottom:1px solid var(--line); }
+.tree .row:last-child{ border-bottom:0; }
+.tree .row.head{ background:var(--bg); font:600 .82rem var(--font-head); color:var(--muted); display:none; }
+.tree .cue{ min-width:0; }
+.tree .move{ min-width:0; color:var(--ink); }
+.tree .move::before{ content:"← "; color:var(--accent); font-weight:700; }
+.tree .tbl-tag{ display:inline-block; font:700 .78rem var(--font-head); color:var(--accent-ink); background:var(--accent); border-radius:6px; padding:0 7px; margin-inline-start:6px; direction:ltr; }
+@media (min-width:640px){
+  .tree .row{ grid-template-columns:1fr 1.05fr; }
+  .tree .row.head{ display:grid; }
+  .tree .move::before{ content:none; }
+}
+
+/* question cards */
+.tools{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+button.toggle{ font:600 .88rem var(--font-head); color:var(--accent); background:var(--surface); border:1px solid var(--accent); border-radius:999px; padding:6px 16px; cursor:pointer; }
+button.toggle:hover{ background:var(--accent-soft); }
+.q{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; display:flex; flex-direction:column; gap:10px; min-width:0; }
+.q header{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; }
+.qid{ font:700 .85rem/1 var(--font-head); background:var(--ink); color:var(--surface); border-radius:6px; padding:5px 8px; }
+.qtag{ font-size:.8rem; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:0 10px; }
+.qtag.gap{ color:var(--bad); border-color:var(--bad); }
+.given{ color:var(--muted); font-size:.95rem; }
+.asks{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:4px; font-size:.95rem; }
+.asks li{ display:flex; gap:8px; }
+.asks .k{ flex:none; font:600 .8rem/1.9 var(--font-head); color:var(--muted); min-width:1.4rem; }
+details.sol{ border-top:1px dashed var(--line-strong); padding-top:10px; }
+details.sol > summary{ cursor:pointer; list-style:none; font:600 .92rem var(--font-head); color:var(--accent); display:inline-flex; align-items:center; gap:6px; }
+details.sol > summary::-webkit-details-marker{ display:none; }
+details.sol > summary::before{ content:"+"; display:inline-grid; place-items:center; width:1.3rem; height:1.3rem; border-radius:50%; background:var(--accent-soft); font-weight:700; }
+details.sol[open] > summary::before{ content:"−"; }
+.sol-body{ display:flex; flex-direction:column; gap:12px; padding-top:10px; }
+.sign{ background:var(--accent-soft); border-radius:10px; padding:9px 12px; font-size:.94rem; }
+.sign b{ color:var(--accent); }
+.steps{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.steps > li{ position:relative; padding-inline-start:2.3rem; min-width:0; }
+.steps > li::before{ content:attr(data-n); position:absolute; inset-inline-start:0; top:.15rem; width:1.75rem; height:1.75rem; border-radius:50%; background:var(--bg); border:1px solid var(--line-strong); color:var(--ink); font:600 .8rem/1.7rem var(--font-head); text-align:center; }
+.ans{ display:inline-block; direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums; background:var(--good-soft); color:var(--good); border-radius:6px; padding:0 .5em; font-weight:700; white-space:nowrap; }
+.res{ margin-top:2px; }
+.note{ font-size:.9rem; color:var(--warn); background:var(--warn-soft); border-radius:8px; padding:7px 11px; }
+
+/* lists */
+.plain{ margin:0; padding-inline-start:1.25rem; display:flex; flex-direction:column; gap:10px; }
+.pitfalls{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr; gap:10px; }
+.pitfalls li{ background:var(--surface); border:1px solid var(--line); border-inline-start:4px solid var(--warn); border-radius:10px; padding:10px 14px; min-width:0; }
+.pitfalls li b:first-child{ display:block; font-family:var(--font-head); }
+.rank{ margin:0; padding:0; list-style:none; counter-reset:r; display:flex; flex-direction:column; gap:10px; }
+.rank li{ counter-increment:r; display:grid; grid-template-columns:2rem 1fr; gap:4px 10px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:10px 14px; }
+.rank li::before{ content:counter(r); grid-row:span 2; font:700 1.3rem/1.6 var(--font-head); color:var(--bad); }
+.rank li:nth-child(2)::before, .rank li:nth-child(3)::before{ color:var(--warn); }
+.rank li:nth-child(n+4)::before{ color:var(--good); }
+.rank .tame{ font-size:.9rem; color:var(--muted); }
+
+/* plan */
+.plan{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; }
+.plan li{ display:grid; grid-template-columns:4.2rem 1fr; gap:10px; padding:11px 14px; border-bottom:1px solid var(--line); }
+.plan li:last-child{ border-bottom:0; }
+.plan .t{ font:700 1rem/1.7 var(--font-head); color:var(--accent); font-variant-numeric:tabular-nums; }
+.plan .total{ background:var(--bg); }
+.plan .total .t{ color:var(--ink); }
+.two{ display:grid; grid-template-columns:1fr; gap:12px; }
+@media (min-width:640px){ .two{ grid-template-columns:1fr 1fr; } }
+.box{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; display:flex; flex-direction:column; gap:8px; min-width:0; }
+.box h3{ color:var(--accent); }
+footer{ margin-top:44px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; display:flex; flex-direction:column; gap:6px; }
+</style>
+</head>
+<body>
+
+<div class="page" dir="rtl" lang="ar">
+
+<header class="hero">
+  <span class="eyebrow">احص 105 · الفصل الثالث</span>
+  <h1>توزيعات المعاينة</h1>
+  <p class="lead">تحليل الفصل من أربعة مصادر عندك: مذكرة الدكتور (ص 48 إلى 56)، وسلايدات القسم (41 شريحة)، وملخص شغوف المكتوب باليد، ومراجعة MID II. تحت تلقى الخريطة، وحل كل الأسئلة، والأخطاء اللي تضيّع الدرجة، والاختصارات، وخطة الوقت.</p>
+  <div class="hero-grid">
+    <dl class="stats">
+      <div><dt>أقسام الفصل في السلايدات</dt><dd>7</dd></div>
+      <div class="gap"><dt>منها في مذكرة الدكتور</dt><dd>4 <small>بس</small></dd></div>
+      <div><dt>أسئلة محلولة هنا</dt><dd>13 <small>(48 فقرة)</small></dd></div>
+      <div><dt>الوقت للكامل</dt><dd><span dir="ltr">≈ 3.5</span> <small>ساعة</small></dd></div>
+    </dl>
+    <figure class="bell-card" style="margin:0">
+      <svg class="bell" viewBox="0 0 320 132" role="img" aria-label="منحنى التوزيع الطبيعي المعياري، والمساحة يسار z = 1.04 مظللة وتساوي 0.8508">
+  <path d="M14.0 108 L14.0 107.7 L15.6 107.7 L17.2 107.6 L18.8 107.6 L20.4 107.5 L21.9 107.5 L23.5 107.4 L25.1 107.3 L26.7 107.2 L28.3 107.1 L29.9 107.0 L31.5 106.9 L33.1 106.8 L34.7 106.7 L36.2 106.5 L37.8 106.4 L39.4 106.2 L41.0 106.0 L42.6 105.8 L44.2 105.5 L45.8 105.3 L47.4 105.0 L49.0 104.7 L50.5 104.4 L52.1 104.0 L53.7 103.6 L55.3 103.2 L56.9 102.7 L58.5 102.3 L60.1 101.7 L61.7 101.2 L63.3 100.6 L64.8 99.9 L66.4 99.2 L68.0 98.5 L69.6 97.7 L71.2 96.9 L72.8 96.0 L74.4 95.1 L76.0 94.1 L77.6 93.1 L79.1 92.0 L80.7 90.9 L82.3 89.7 L83.9 88.4 L85.5 87.1 L87.1 85.8 L88.7 84.3 L90.3 82.9 L91.9 81.3 L93.4 79.7 L95.0 78.1 L96.6 76.4 L98.2 74.6 L99.8 72.8 L101.4 71.0 L103.0 69.1 L104.6 67.1 L106.2 65.2 L107.7 63.2 L109.3 61.1 L110.9 59.1 L112.5 57.0 L114.1 54.9 L115.7 52.8 L117.3 50.7 L118.9 48.6 L120.5 46.5 L122.0 44.4 L123.6 42.3 L125.2 40.3 L126.8 38.3 L128.4 36.3 L130.0 34.4 L131.6 32.5 L133.2 30.7 L134.8 28.9 L136.3 27.2 L137.9 25.6 L139.5 24.1 L141.1 22.7 L142.7 21.3 L144.3 20.1 L145.9 19.0 L147.5 17.9 L149.1 17.0 L150.6 16.2 L152.2 15.5 L153.8 15.0 L155.4 14.5 L157.0 14.2 L158.6 14.1 L160.2 14.0 L161.8 14.1 L163.3 14.3 L164.9 14.6 L166.5 15.1 L168.1 15.7 L169.7 16.4 L171.3 17.2 L172.9 18.1 L174.5 19.2 L176.1 20.3 L177.6 21.6 L179.2 23.0 L180.8 24.4 L182.4 26.0 L184.0 27.6 L185.6 29.3 L187.2 31.1 L188.8 32.9 L190.4 34.8 L191.9 36.7 L193.5 38.7 L195.1 40.7 L196.7 42.8 L198.3 44.9 L199.9 46.9 L201.5 49.0 L203.1 51.2 L204.7 53.3 L204.7 108 Z" class="bell-area"/>
+  <path d="M14.0 107.7 L16.1 107.7 L18.2 107.6 L20.3 107.5 L22.3 107.4 L24.4 107.4 L26.5 107.3 L28.6 107.1 L30.7 107.0 L32.8 106.8 L34.9 106.7 L36.9 106.5 L39.0 106.2 L41.1 106.0 L43.2 105.7 L45.3 105.3 L47.4 105.0 L49.5 104.6 L51.5 104.1 L53.6 103.6 L55.7 103.1 L57.8 102.5 L59.9 101.8 L62.0 101.1 L64.1 100.3 L66.1 99.4 L68.2 98.4 L70.3 97.4 L72.4 96.3 L74.5 95.1 L76.6 93.8 L78.7 92.4 L80.7 90.9 L82.8 89.3 L84.9 87.6 L87.0 85.8 L89.1 84.0 L91.2 82.0 L93.3 79.9 L95.3 77.7 L97.4 75.5 L99.5 73.1 L101.6 70.7 L103.7 68.2 L105.8 65.7 L107.9 63.0 L109.9 60.4 L112.0 57.6 L114.1 54.9 L116.2 52.1 L118.3 49.4 L120.4 46.6 L122.5 43.9 L124.5 41.2 L126.6 38.5 L128.7 35.9 L130.8 33.4 L132.9 31.0 L135.0 28.7 L137.1 26.5 L139.1 24.5 L141.2 22.6 L143.3 20.8 L145.4 19.3 L147.5 17.9 L149.6 16.7 L151.7 15.8 L153.7 15.0 L155.8 14.4 L157.9 14.1 L160.0 14.0 L162.1 14.1 L164.2 14.4 L166.3 15.0 L168.3 15.8 L170.4 16.7 L172.5 17.9 L174.6 19.3 L176.7 20.8 L178.8 22.6 L180.9 24.5 L182.9 26.5 L185.0 28.7 L187.1 31.0 L189.2 33.4 L191.3 35.9 L193.4 38.5 L195.5 41.2 L197.5 43.9 L199.6 46.6 L201.7 49.4 L203.8 52.1 L205.9 54.9 L208.0 57.6 L210.1 60.4 L212.1 63.0 L214.2 65.7 L216.3 68.2 L218.4 70.7 L220.5 73.1 L222.6 75.5 L224.7 77.7 L226.7 79.9 L228.8 82.0 L230.9 84.0 L233.0 85.8 L235.1 87.6 L237.2 89.3 L239.3 90.9 L241.3 92.4 L243.4 93.8 L245.5 95.1 L247.6 96.3 L249.7 97.4 L251.8 98.4 L253.9 99.4 L255.9 100.3 L258.0 101.1 L260.1 101.8 L262.2 102.5 L264.3 103.1 L266.4 103.6 L268.5 104.1 L270.5 104.6 L272.6 105.0 L274.7 105.3 L276.8 105.7 L278.9 106.0 L281.0 106.2 L283.1 106.5 L285.1 106.7 L287.2 106.8 L289.3 107.0 L291.4 107.1 L293.5 107.3 L295.6 107.4 L297.7 107.4 L299.7 107.5 L301.8 107.6 L303.9 107.7 L306.0 107.7" class="bell-line" fill="none"/>
+  <line x1="14" y1="108" x2="306" y2="108" class="bell-axis"/>
+  <line x1="204.7" y1="47.3" x2="204.7" y2="108" class="bell-mark"/>
+  <text x="160.0" y="125" text-anchor="middle" class="bell-tick">0</text>
+  <text x="204.7" y="125" text-anchor="middle" class="bell-tick bell-tick-strong">z = 1.04</text>
+  <text x="127.8" y="86" text-anchor="middle" class="bell-val">0.8508</text>
+</svg>
+      <figcaption class="cap">جدول Z يعطيك المساحة يسار z. هذي قراءة س1 فقرة 6 في المذكرة: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mn>1.04</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.8508</mn></mrow></semantics></math></span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="tldr" aria-labelledby="h-tldr">
+  <div class="sec-head"><span class="eyebrow">الخلاصة</span><h2 id="h-tldr">أهم خمس نقاط</h2></div>
+  <div class="tldr">
+    <ol>
+      <li><b>الفصل فكرة وحدة.</b> كل إحصاءة (<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span> أو <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span> أو الفرق بين اثنين منهم) توزيعها طبيعي بمتوسط وانحراف معياري اسمه الخطأ المعياري SE. أي سؤال احتمال: حوّل لـ Z واقرأ الجدول. يعني الفصل كله تطبيق مباشر لمهارة جدول Z من الفصل الثاني.</li>
+      <li><b>مذكرة الدكتور تغطي 4 أقسام من 7.</b> السلايدات فيها زيادة: تباين العينة <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span> بجدول <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span>، ونسبة تباينين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow></semantics></math></span> بجدول F، وحالات t لما σ مجهولة.</li>
+      <li><b>المراجعة تأكد النقص.</b> أول سؤال في مراجعة MID II سؤال F، وهو مو موجود في المذكرة. لا تعتمد على المذكرة لحالها.</li>
+      <li><b>الرمز <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mtext> </mtext><mi>b</mi><mo stretchy="false">)</mo></mrow></semantics></math></span> مو ثابت بين المصادر.</b> المذكرة تكتب الرقم الثاني انحراف معياري، وملخص شغوف يكتبه تباين، والمراجعة تستخدم الاثنين. احسب الاثنين دايم وطابق مع الخيارات.</li>
+      <li><b>أسهل درجات الفصل.</b> أسئلة المتوسط والتباين تنحل في ثواني، وسؤال «الاحتمال عند المتوسط = 0.5» تكرر 3 مرات في المراجعة.</li>
+    </ol>
+  </div>
+  <ul class="toc" aria-label="أقسام الصفحة">
+    <li><a href="#map">خريطة الفصل</a></li>
+    <li><a href="#core">الفكرة الواحدة</a></li>
+    <li><a href="#tree">أي جدول أستخدم؟</a></li>
+    <li><a href="#notes">حلول مذكرة الدكتور</a></li>
+    <li><a href="#revision">أسئلة المراجعة</a></li>
+    <li><a href="#missing">الناقص من المذكرة</a></li>
+    <li><a href="#pitfalls">انتبه</a></li>
+    <li><a href="#hard">المعقد والاختصارات</a></li>
+    <li><a href="#plan">الوقت والخطة</a></li>
+  </ul>
+</section>
+
+<section id="map" aria-labelledby="h-map">
+  <div class="sec-head"><span class="eyebrow">الخريطة</span><h2 id="h-map">وش في الفصل، ومن وين جاء</h2></div>
+  <p>الأقسام بترتيب السلايدات، والسبعة كلها موجودة فيها. عمود المراجعة يذكر أرقام أسئلة MID II اللي تخص كل قسم.</p>
+  <div class="tbl">
+    <table class="cover">
+      <thead><tr><th>القسم</th><th>المذكرة</th><th>الأولوية</th><th>المراجعة</th><th>الجدول</th></tr></thead>
+      <tbody>
+        <tr><td>1. العينة والإحصاءة (تعاريف)</td><td class="no">✗</td><td><span class="pill low">قراءة سريعة</span></td><td>—</td><td>—</td></tr>
+        <tr><td>2. متوسط واحد <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span></td><td class="yes">✓ س1، س2</td><td><span class="pill high">عالية</span></td><td>15</td><td>Z (أو t)</td></tr>
+        <tr><td>3. فرق متوسطين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></td><td class="yes">✓ س3، س4</td><td><span class="pill high">عالية</span></td><td>3، 15</td><td>Z (أو t مع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>p</mi><mn>2</mn></msubsup></mrow></semantics></math></span>)</td></tr>
+        <tr><td>4. تباين العينة <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span></td><td class="no">✗</td><td><span class="pill mid">متوسطة</span></td><td>—</td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span></td></tr>
+        <tr><td>5. نسبة تباينين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow></semantics></math></span></td><td class="no">✗</td><td><span class="pill high">عالية</span></td><td>1</td><td>F</td></tr>
+        <tr><td>6. نسبة واحدة <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span></td><td class="yes">✓ س5</td><td><span class="pill high">عالية</span></td><td>2، 14</td><td>Z</td></tr>
+        <tr><td>7. فرق نسبتين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></td><td class="yes">✓ س6</td><td><span class="pill high">عالية</span></td><td>2، 14</td><td>Z</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted small">باقي أسئلة المراجعة (4 إلى 13) فترات ثقة، وهذي من الفصل الرابع. الأولوية هنا مبنية على وجود القسم في المذكرة والمراجعة، وما تضمن وش يجي في الاختبار.</p>
+</section>
+
+<section id="core" aria-labelledby="h-core">
+  <div class="sec-head"><span class="eyebrow">الفكرة الواحدة</span><h2 id="h-core">ثلاث خطوات لكل سؤال متوسطات ونسب</h2></div>
+  <ol class="plain">
+    <li><b>حدد الإحصاءة:</b> متوسط ولا نسبة؟ عينة وحدة ولا عينتين؟</li>
+    <li><b>احسب مركزها E وخطأها المعياري SE</b> من الجدول تحت.</li>
+    <li><b>حوّل لـ Z واقرأ الجدول:</b></li>
+  </ol>
+  <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mtext>value</mtext><mo>−</mo><mi>E</mi></mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow></mfrac></mrow></semantics></math></span></span>
+  <div class="tbl">
+    <table class="formulas">
+      <thead><tr><th>الإحصاءة</th><th>المتوسط E</th><th>التباين Var</th><th>الخطأ المعياري SE</th></tr></thead>
+      <tbody>
+        <tr class="mark-row"><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><msup><mi>σ</mi><mn>2</mn></msup><mi>n</mi></mfrac></mstyle></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mstyle></mrow></semantics></math></span></td></tr>
+        <tr><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>1</mn></msub></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>2</mn></msub></mfrac></mstyle></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>1</mn></msub></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>2</mn></msub></mfrac></mstyle></mrow></msqrt></mrow></semantics></math></span></td></tr>
+        <tr><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mi>n</mi></mfrac></mstyle></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mi>n</mi></mfrac></mstyle></msqrt></mrow></semantics></math></span></td></tr>
+        <tr><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>p</mi><mn>1</mn></msub><msub><mi>q</mi><mn>1</mn></msub></mrow><msub><mi>n</mi><mn>1</mn></msub></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>p</mi><mn>2</mn></msub><msub><mi>q</mi><mn>2</mn></msub></mrow><msub><mi>n</mi><mn>2</mn></msub></mfrac></mstyle></mrow></semantics></math></span></td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>p</mi><mn>1</mn></msub><msub><mi>q</mi><mn>1</mn></msub></mrow><msub><mi>n</mi><mn>1</mn></msub></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>p</mi><mn>2</mn></msub><msub><mi>q</mi><mn>2</mn></msub></mrow><msub><mi>n</mi><mn>2</mn></msub></mfrac></mstyle></mrow></msqrt></mrow></semantics></math></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>اختصار: احفظ سطر واحد وقاعدتين بدل 12 قانون</h3>
+  <ul class="rules">
+    <li><span class="r-name">السطر</span><span class="hl"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>∼</mo><mi>N</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>μ</mi><mo separator="true">,</mo><mtext> </mtext><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mstyle><mo fence="true">)</mo></mrow></mrow></semantics></math></span></span></li>
+    <li><span class="r-name">قاعدة النسبة</span>بدّل <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>→</mo><mi>p</mi></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>→</mo><mi>p</mi><mi>q</mi></mrow></semantics></math></span>، مع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>1</mn><mo>−</mo><mi>p</mi></mrow></semantics></math></span>. يطلع لك سطر <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span> مباشرة.</li>
+    <li><span class="r-name">قاعدة الفرق</span>المتوسطات تنطرح، والتباينات <b>تنجمع</b>. الإشارة بين التباينين موجبة دايم حتى لو السؤال عن فرق.</li>
+    <li><span class="r-name">وبعدها</span>إذا حسبت Var خلاص: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mi mathvariant="normal">Var</mi><mo>⁡</mo></msqrt></mrow></semantics></math></span>، والتوزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>E</mi><mo separator="true">,</mo><mtext> </mtext><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo stretchy="false">)</mo></mrow></semantics></math></span>. يعني فقرات «المتوسط» و«التباين» و«التوزيع» حساب واحد.</li>
+  </ul>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>السؤال يقول</th><th>من جدول Z</th></tr></thead>
+      <tbody>
+        <tr><td>أقل من</td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></semantics></math></span> قيمة الجدول مباشرة</td></tr>
+        <tr><td>أكبر من</td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></semantics></math></span></td></tr>
+        <tr><td>بين</td><td><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>a</mi><mo>&lt;</mo><mi>Z</mi><mo>&lt;</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></semantics></math></span></td></tr>
+        <tr><td>يساوي بالضبط</td><td>صفر، لأن التوزيع متصل</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted small">ملاحظة على المذكرة: مكتوب فيها <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>=</mo><mi>μ</mi></mrow></semantics></math></span>، والمقصود <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></msub><mo>=</mo><mi>μ</mi></mrow></semantics></math></span>. يعني متوسط توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span> يساوي متوسط المجتمع.</p>
+</section>
+
+<section id="tree" aria-labelledby="h-tree">
+  <div class="sec-head"><span class="eyebrow">شجرة القرار</span><h2 id="h-tree">وش علامة السؤال؟ ووش أول حركة؟</h2></div>
+  <p>قبل أي حساب، العلامة تحدد الجدول. هذي مجمعة من السلايدات وملخص شغوف.</p>
+  <div class="tree">
+    <div class="row head"><span>العلامة في السؤال</span><span>أول حركة</span></div>
+    <div class="row"><div class="cue"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span>، و σ معروفة، والمجتمع طبيعي. حجم العينة ما يفرق.</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>σ</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow></mfrac></mstyle></mrow></semantics></math></span><span class="tbl-tag">Z</span></div></div>
+    <div class="row"><div class="cue"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span>، والمجتمع مو طبيعي أو ما انذكر توزيعه، و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow></semantics></math></span>.</div><div class="move">نفس Z تقريبًا (نظرية النهاية المركزية).<span class="tbl-tag">Z</span></div></div>
+    <div class="row"><div class="cue"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span>، و σ مجهولة وعندك S، والمجتمع طبيعي و n صغيرة.</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>S</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow></mfrac></mstyle></mrow></semantics></math></span> بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></semantics></math></span><span class="tbl-tag">t</span></div></div>
+    <div class="row"><div class="cue">عينتين ومتوسطين، و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>σ</mi><mn>2</mn></msub></mrow></semantics></math></span> معروفة (أو <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow></semantics></math></span>).</div><div class="move">Z مع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msub><mi>n</mi><mn>2</mn></msub></mrow></msqrt></mrow></semantics></math></span><span class="tbl-tag">Z</span></div></div>
+    <div class="row"><div class="cue">عينتين، و σ مجهولة لكن «متساوية».</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>p</mi><mn>2</mn></msubsup></mrow></semantics></math></span> أول، ثم T بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>2</mn></mrow></semantics></math></span><span class="tbl-tag">t</span></div></div>
+    <div class="row"><div class="cue">السؤال عن <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span> (تباين عينة وحدة).</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mi>S</mi><mn>2</mn></msup></mrow><msup><mi>σ</mi><mn>2</mn></msup></mfrac></mstyle></mrow></semantics></math></span> بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></semantics></math></span><span class="tbl-tag">χ²</span></div></div>
+    <div class="row"><div class="cue">السؤال عن <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow></semantics></math></span>.</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mfrac></mstyle><mo>⋅</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup></mfrac></mstyle></mrow></semantics></math></span> بدرجات <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></semantics></math></span><span class="tbl-tag">F</span></div></div>
+    <div class="row"><div class="cue">نسبة مئوية، أو proportion، أو «x من n».</div><div class="move"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo>−</mo><mi>p</mi></mrow><msqrt><mrow><mi>p</mi><mi>q</mi><mi mathvariant="normal">/</mi><mi>n</mi></mrow></msqrt></mfrac></mstyle></mrow></semantics></math></span>، وتأكد إن <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>p</mi></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>q</mi></mrow></semantics></math></span> فوق 5<span class="tbl-tag">Z</span></div></div>
+    <div class="row"><div class="cue">مجموعتين: ذكور وإناث، مصنع A و B، مدينتين، سلالتين.</div><div class="move">نسخة الفرق من نفس القانون.</div></div>
+  </div>
+  <div class="callout warn">
+    <span class="callout-title">اتجاه الجداول</span>
+    <p>جدول Z يعطيك «أقل من» بس. جداول t و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> و F تعطيك «أكبر من» بس. فإذا السؤال قال <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>F</mi><mo>&lt;</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span> تقرأ جدول F عند 0.05، وإذا قال <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></semantics></math></span> تحسب <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></semantics></math></span>.</p>
+  </div>
+</section>
+
+<section id="notes" aria-labelledby="h-notes">
+  <div class="sec-head"><span class="eyebrow">مذكرة الدكتور · ص 49 إلى 55</span><h2 id="h-notes">حل الأسئلة الستة</h2></div>
+  <div class="tools"><p class="muted small">الحلول مقفلة. جرّب السؤال على ورقة قبل تفتحها.</p><button class="toggle" type="button" data-toggle="notes" aria-pressed="false">اظهر كل الحلول</button></div>
+
+  <article class="q">
+    <header><span class="qid">س1</span><h3>البطارية</h3><span class="qtag">متوسط واحد</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mn>5</mn><mo separator="true">,</mo><mtext> </mtext><mi>σ</mi><mo>=</mo><mn>1</mn></mrow></semantics></math></span>، والعمر طبيعي تقريبًا.</p>
+    <ul class="asks">
+      <li><span class="k">1</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo></mrow></semantics></math></span> لعينة حجمها 5</span></li>
+      <li><span class="k">2</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo></mrow></semantics></math></span> لعينة حجمها 5</span></li>
+      <li><span class="k">4</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>4.5</mn><mo>&lt;</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&lt;</mo><mn>5.4</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> لعينة حجمها 16</span></li>
+      <li><span class="k">5</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&lt;</mo><mn>5.5</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> لعينة حجمها 16</span></li>
+      <li><span class="k">6</span><span>أوجد a إذا <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&gt;</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.1492</mn></mrow></semantics></math></span> لعينة حجمها 9</span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> متوسط عينة، و σ معروفة، والمجتمع طبيعي، فالجدول Z. <b>أول حركة:</b> احسب <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mi>σ</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow></semantics></math></span> من جديد كل ما تغيّر n.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mi>μ</mi><mo>=</mo><mn>5</mn></mrow></semantics></math></span> <span class="ans">5</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>σ</mi><mn>2</mn></msup><mi>n</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><mo>=</mo><mn>0.2</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.2</span></p></li>
+        <li data-n="4"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>16</mn></msqrt></mfrac><mo>=</mo><mn>0.25</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>Z</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>4.5</mn><mo>−</mo><mn>5</mn></mrow><mn>0.25</mn></mfrac><mo>=</mo><mo>−</mo><mn>2</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>Z</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>5.4</mn><mo>−</mo><mn>5</mn></mrow><mn>0.25</mn></mfrac><mo>=</mo><mn>1.6</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mo>−</mo><mn>2</mn><mo>&lt;</mo><mi>Z</mi><mo>&lt;</mo><mn>1.6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.9452</mn><mo>−</mo><mn>0.0228</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.9224</span></p></li>
+        <li data-n="5"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mn>5.5</mn><mo>−</mo><mn>5</mn></mrow><mn>0.25</mn></mfrac><mo>=</mo><mn>2</mn><mtext> </mtext><mo>⇒</mo><mtext> </mtext><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.9772</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.9772</span></p></li>
+        <li data-n="6"><p>هنا n = 9، يعني <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><msqrt><mn>9</mn></msqrt><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow></semantics></math></span>. الجدول يعطي «أقل من»، فحوّل: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.1492</mn><mo>=</mo><mn>0.8508</mn></mrow></semantics></math></span>. دوّر 0.8508 داخل الجدول تلقاها عند <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>1.04</mn></mrow></semantics></math></span>.</p><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>a</mi><mo>=</mo><mi>μ</mi><mo>+</mo><mi>z</mi><mo>⋅</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mn>5</mn><mo>+</mo><mn>1.04</mn><mo>×</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mn>1</mn><mn>3</mn></mfrac></mstyle><mo>=</mo><mn>5.347</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">5.347</span></p></li>
+      </ol>
+      <p class="note">n يتغير داخل نفس السؤال: 5 ثم 16 ثم 9. وما فيه فقرة 3 في المذكرة، الترقيم ينتقل من 2 إلى 4.</p>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">س2</span><h3>عينة حجمها 64</h3><span class="qtag">متوسط واحد</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>64</mn><mo separator="true">,</mo><mtext> </mtext><mi>μ</mi><mo>=</mo><mn>55</mn><mo separator="true">,</mo><mtext> </mtext><mi>σ</mi><mo>=</mo><mn>10</mn></mrow></semantics></math></span>، وتوزيع المجتمع ما انذكر.</p>
+    <ul class="asks">
+      <li><span class="k">a</span><span>توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span> التقريبي</span></li>
+      <li><span class="k">b</span><span>متوسط <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span></span></li>
+      <li><span class="k">c</span><span>الخطأ المعياري لـ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span></span></li>
+      <li><span class="k">d</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&gt;</mo><mn>52</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> التوزيع مو مذكور لكن <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>64</mn><mo>≥</mo><mn>30</mn></mrow></semantics></math></span>، فبنظرية النهاية المركزية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span> طبيعي تقريبًا. <b>أول حركة:</b> <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mn>10</mn><mi mathvariant="normal">/</mi><msqrt><mn>64</mn></msqrt></mrow></semantics></math></span>.</p>
+      <ol class="steps">
+        <li data-n="a"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>∼</mo><mi>N</mi><mo stretchy="false">(</mo><mn>55</mn><mo separator="true">,</mo><mtext> </mtext><mn>1.25</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><p class="muted small">بصيغة التباين تنكتب <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>55</mn><mo separator="true">,</mo><mtext> </mtext><mn>1.5625</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>. شوف أي صيغة في الخيارات.</p></li>
+        <li data-n="b"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mi>μ</mi><mo>=</mo><mn>55</mn></mrow></semantics></math></span> <span class="ans">55</span></li>
+        <li data-n="c"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>10</mn><msqrt><mn>64</mn></msqrt></mfrac></mstyle><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>10</mn><mn>8</mn></mfrac></mstyle></mrow></semantics></math></span> <span class="ans">1.25</span></li>
+        <li data-n="d"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&gt;</mo><mn>52</mn><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>&gt;</mo><mfrac><mrow><mn>52</mn><mo>−</mo><mn>55</mn></mrow><mn>1.25</mn></mfrac><mo fence="true">)</mo></mrow></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mo>−</mo><mn>2.4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.0082</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.9918</span></p></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">س3</span><h3>مجتمعين طبيعيين</h3><span class="qtag">فرق متوسطين</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>36</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>μ</mi><mn>1</mn></msub><mo>=</mo><mn>70</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>4</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>49</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>85</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mn>5</mn></mrow></semantics></math></span></p>
+    <ul class="asks">
+      <li><span class="k">a</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">a</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">b</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo>&gt;</mo><mo>−</mo><mn>16</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> عينتين، و σ معروفة، فالجدول Z. <b>أول حركة:</b> المتوسط بالطرح والتباين بالجمع. المتوسط هنا يطلع سالب، وهذا عادي.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mn>70</mn><mo>−</mo><mn>85</mn><mo>=</mo><mo>−</mo><mn>15</mn></mrow></semantics></math></span> <span class="ans">−15</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo>=</mo><mfrac><msup><mn>4</mn><mn>2</mn></msup><mn>36</mn></mfrac><mo>+</mo><mfrac><msup><mn>5</mn><mn>2</mn></msup><mn>49</mn></mfrac><mo>=</mo><mn>0.4444</mn><mo>+</mo><mn>0.5102</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.9546</span></p></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mn>0.9546</mn></msqrt><mo>=</mo><mn>0.9771</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mo>−</mo><mn>16</mn><mo>−</mo><mo stretchy="false">(</mo><mo>−</mo><mn>15</mn><mo stretchy="false">)</mo></mrow><mn>0.9771</mn></mfrac><mo>=</mo><mo>−</mo><mn>1.02</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mo>−</mo><mn>1.02</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.1539</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.8461</span></p></li>
+      </ol>
+      <p class="note">انتبه لسالب السالب: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>16</mn><mo>−</mo><mo stretchy="false">(</mo><mo>−</mo><mn>15</mn><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mn>1</mn></mrow></semantics></math></span>.</p>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">س4</span><h3>التيرير والبودل</h3><span class="qtag">فرق متوسطين · سؤال كلامي</span></header>
+    <p class="given">المعطى: تيرير <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>=</mo><mn>72</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>10</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>64</mn></mrow></semantics></math></span>، وبودل <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>28</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mn>5</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>100</mn></mrow></semantics></math></span></p>
+    <ul class="asks">
+      <li><span class="k">؟</span><span>احتمال إن متوسط التيرير يزيد عن متوسط البودل «بأقل من 44.2»</span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> مجموعتين و «يزيد عن». <b>أول حركة:</b> ترجم الجملة لرموز قبل أي رقم: اللي «يزيد» هو الأول، فالمطلوب <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo>&lt;</mo><mn>44.2</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mn>72</mn><mo>−</mo><mn>28</mn><mo>=</mo><mn>44</mn></mrow></semantics></math></span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo>=</mo><mfrac><mrow><mn>1</mn><msup><mn>0</mn><mn>2</mn></msup></mrow><mn>64</mn></mfrac><mo>+</mo><mfrac><msup><mn>5</mn><mn>2</mn></msup><mn>100</mn></mfrac></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><mn>1.5625</mn><mo>+</mo><mn>0.25</mn><mo>=</mo><mn>1.8125</mn></mrow></semantics></math></span></span></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mn>44.2</mn><mo>−</mo><mn>44</mn></mrow><msqrt><mn>1.8125</mn></msqrt></mfrac><mo>=</mo><mfrac><mn>0.2</mn><mn>1.3463</mn></mfrac><mo>=</mo><mn>0.15</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mn>0.15</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.5596</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.5596</span></p></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">س5</span><h3>نسبة السكري</h3><span class="qtag">نسبة واحدة</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.25</mn><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mo>=</mo><mn>100</mn></mrow></semantics></math></span></p>
+    <ul class="asks">
+      <li><span class="k">a</span><span>متوسط وتباين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span></span></li>
+      <li><span class="k">b</span><span>توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover></mrow></semantics></math></span> التقريبي</span></li>
+      <li><span class="k">c</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo>&lt;</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> نسبة، فالجدول Z. <b>أول حركة:</b> تأكد من الشروط: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>100</mn><mo>≥</mo><mn>30</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>p</mi><mo>=</mo><mn>25</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>q</mi><mo>=</mo><mn>75</mn></mrow></semantics></math></span>، كلها فوق 5.</p>
+      <ol class="steps">
+        <li data-n="a"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mn>0.25</mn></mrow></semantics></math></span> و <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>0.25</mn><mo>×</mo><mn>0.75</mn></mrow><mn>100</mn></mfrac><mo>=</mo><mn>0.001875</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.25</span> و <span class="ans">0.001875</span></p></li>
+        <li data-n="b"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mn>0.001875</mn></msqrt><mo>=</mo><mn>0.0433</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>p</mi><mo>^</mo></mover><mo>∼</mo><mi>N</mi><mo stretchy="false">(</mo><mn>0.25</mn><mo separator="true">,</mo><mtext> </mtext><mn>0.0433</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+        <li data-n="c"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mn>0.2</mn><mo>−</mo><mn>0.25</mn></mrow><mn>0.0433</mn></mfrac><mo>=</mo><mo>−</mo><mn>1.15</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mo>−</mo><mn>1.15</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.1251</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.1251</span></p></li>
+      </ol>
+      <p class="note">لو قرّبت SE إلى 0.04 بدل 0.0433 يطلع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mo>−</mo><mn>1.25</mn></mrow></semantics></math></span> والجواب 0.1056، وهذا غلط. خلّ SE بأربع خانات.</p>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">س6</span><h3>المدخنين</h3><span class="qtag">فرق نسبتين</span></header>
+    <p class="given">المعطى: ذكور <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mn>0.25</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn></mrow></semantics></math></span>، وإناث <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub><mo>=</mo><mn>0.20</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>10</mn></mrow></semantics></math></span></p>
+    <ul class="asks">
+      <li><span class="k">1</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">2</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">3</span><span>توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">4</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0.1</mn><mo>&lt;</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo>&lt;</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> مجموعتين ونسب، فهو فرق نسبتين بجدول Z. <b>أول حركة:</b> <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub></mrow></semantics></math></span> للذكور و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub></mrow></semantics></math></span> للإناث، بنفس ترتيب السؤال.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mn>0.25</mn><mo>−</mo><mn>0.20</mn></mrow></semantics></math></span> <span class="ans">0.05</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo>=</mo><mfrac><mrow><mn>0.25</mn><mo>×</mo><mn>0.75</mn></mrow><mn>5</mn></mfrac><mo>+</mo><mfrac><mrow><mn>0.20</mn><mo>×</mo><mn>0.80</mn></mrow><mn>10</mn></mfrac></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><mn>0.0375</mn><mo>+</mo><mn>0.016</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.0535</span></p></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mn>0.0535</mn></msqrt><mo>=</mo><mn>0.2313</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo>∼</mo><mi>N</mi><mo stretchy="false">(</mo><mn>0.05</mn><mo separator="true">,</mo><mtext> </mtext><mn>0.2313</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+        <li data-n="4"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>Z</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>0.1</mn><mo>−</mo><mn>0.05</mn></mrow><mn>0.2313</mn></mfrac><mo>=</mo><mn>0.22</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>Z</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>0.2</mn><mo>−</mo><mn>0.05</mn></mrow><mn>0.2313</mn></mfrac><mo>=</mo><mn>0.65</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0.22</mn><mo>&lt;</mo><mi>Z</mi><mo>&lt;</mo><mn>0.65</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.7422</mn><mo>−</mo><mn>0.5871</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.1551</span></p></li>
+      </ol>
+      <p class="note">العينات هنا 5 و 10، وهذي أصغر من شرط التقريب لأن <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mn>1.25</mn></mrow></semantics></math></span> أقل من 5. ومع ذلك المذكرة تحلها بالقانون عادي. نفس القصة في السلايدات بعينات 50 و 100: التباين هناك 0.00535، وسؤالها <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo>≥</mo><mn>0.06</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.4443</mn></mrow></semantics></math></span>. لا تخلط أرقام النسختين.</p>
+    </div></details>
+  </article>
+</section>
+
+<section id="revision" aria-labelledby="h-rev">
+  <div class="sec-head"><span class="eyebrow">مراجعة MID II</span><h2 id="h-rev">الأسئلة اللي تخص الفصل الثالث</h2></div>
+  <p>من 15 سؤال في المراجعة، خمسة تخص الفصل: 1 و 2 و 3 و 14 و 15. هذي أقرب شي لشكل الاختبار، فحلها بوقت قبل تفتح الحل.</p>
+  <div class="tools"><button class="toggle" type="button" data-toggle="revision" aria-pressed="false">اظهر كل الحلول</button></div>
+
+  <article class="q">
+    <header><span class="qid">م1</span><h3>نسبة تباينين</h3><span class="qtag gap">F · مو في المذكرة</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>10</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>15</mn></mrow></semantics></math></span> من <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><msub><mi>μ</mi><mn>1</mn></msub><mo separator="true">,</mo><mn>36</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><msub><mi>μ</mi><mn>2</mn></msub><mo separator="true">,</mo><mn>49</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>. أوجد k إذا <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup><mo>&lt;</mo><mi>k</mi><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span></p>
+    <p class="given opts">الخيارات: <span dir="ltr">(A) 0.254</span> <span dir="ltr">(B) 0.332</span> <span dir="ltr">(C) 1.947</span> <span dir="ltr">(D) 2.314</span></p>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow></semantics></math></span>، فالجدول F. والرقم الثاني في <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mn>36</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> هنا تباين: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mn>36</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><mn>49</mn></mrow></semantics></math></span>.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mfrac><mo>⋅</mo><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup></mfrac><mo>=</mo><mfrac><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mfrac><mo>⋅</mo><mfrac><mn>49</mn><mn>36</mn></mfrac></mrow></semantics></math></span></span><p>بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>1</mn></msub><mo>=</mo><mn>10</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>9</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo>=</mo><mn>15</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>14</mn></mrow></semantics></math></span>.</p></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>F</mi><mo>&lt;</mo><mfrac><mrow><mn>49</mn><mi>k</mi></mrow><mn>36</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⇒</mo><mtext> </mtext><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>F</mi><mo>&gt;</mo><mfrac><mrow><mn>49</mn><mi>k</mi></mrow><mn>36</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.05</mn></mrow></semantics></math></span></span></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mn>49</mn><mi>k</mi></mrow><mn>36</mn></mfrac><mo>=</mo><msub><mi>f</mi><mn>0.05</mn></msub><mo stretchy="false">(</mo><mn>9</mn><mo separator="true">,</mo><mn>14</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2.65</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2.65</mn><mo>×</mo><mfrac><mn>36</mn><mn>49</mn></mfrac></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">1.947 (C)</span></p></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">م2</span><h3>التدخين والتجاعيد</h3><span class="qtag">نسبة وفرق نسبتين</span></header>
+    <p class="given">المعطى: 90 من 150 مدخن، و 100 من 250 غير مدخن، يعني <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mn>0.6</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub><mo>=</mo><mn>0.4</mn></mrow></semantics></math></span>. السؤال يعامل هذي النسب كأنها نسب المجتمع، وعلى هذا تنضبط الخيارات.</p>
+    <ul class="asks">
+      <li><span class="k">1</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>&gt;</mo><mn>0.60</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">2</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>=</mo><mn>0.50</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">3</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>&lt;</mo><mn>0.65</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">4</span><span>توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">5</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>2</mn></msub><mo>&lt;</mo><mn>0.102</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <ol class="steps">
+        <li data-n="1">0.60 هي المتوسط نفسه، والتوزيع متماثل. <span class="ans">0.5 (B)</span></li>
+        <li data-n="2">احتمال قيمة وحدة بالضبط في توزيع متصل. <span class="ans">0 (A)</span></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mfrac><mrow><mn>0.6</mn><mo>×</mo><mn>0.4</mn></mrow><mn>150</mn></mfrac></msqrt><mo>=</mo><mn>0.04</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mn>0.65</mn><mo>−</mo><mn>0.6</mn></mrow><mn>0.04</mn></mfrac><mo>=</mo><mn>1.25</mn></mrow></semantics></math></span></span><p class="res"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mn>1.25</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> <span class="ans">0.8944 (C)</span></p></li>
+        <li data-n="4"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo>=</mo><mfrac><mn>0.24</mn><mn>150</mn></mfrac><mo>+</mo><mfrac><mn>0.24</mn><mn>250</mn></mfrac><mo>=</mo><mn>0.00256</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><mn>0.0506</mn><mo>≈</mo><mn>0.05</mn></mrow></semantics></math></span></span><p class="res"><span dir="ltr">Normal(0.2, 0.05)</span> <span class="ans">(A)</span>. الرقم الثاني هنا SE.</p></li>
+        <li data-n="5"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mn>0.102</mn><mo>−</mo><mn>0.2</mn></mrow><mn>0.05</mn></mfrac><mo>=</mo><mo>−</mo><mn>1.96</mn><mtext> </mtext><mo>⇒</mo><mtext> </mtext><mn>0.025</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.025 (C)</span>. بـ SE الدقيق (0.0506) يطلع 0.0262، والأقرب برضو 0.025.</p></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">م3</span><h3>درجات الرياضيات والإنجليزي</h3><span class="qtag">فرق متوسطين</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>=</mo><mn>20</mn><mo separator="true">,</mo><mtext> </mtext><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><mn>9</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>25</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>15</mn><mo separator="true">,</mo><mtext> </mtext><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><mn>4</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>15</mn></mrow></semantics></math></span></p>
+    <ul class="asks">
+      <li><span class="k">1</span><span>متوسط <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">2</span><span>الخطأ المعياري لـ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">3</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo>&lt;</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> التباين معطى جاهز (9 و 4). لا تربّعه مرة ثانية.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>−</mo><mn>15</mn></mrow></semantics></math></span> <span class="ans">5 (D)</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mrow><mfrac><mn>9</mn><mn>25</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>15</mn></mfrac></mrow></msqrt><mo>=</mo><msqrt><mn>0.6267</mn></msqrt><mo>=</mo><mn>0.7916</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.79 (C)</span></p></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>&lt;</mo><mfrac><mrow><mn>3</mn><mo>−</mo><mn>5</mn></mrow><mn>0.7916</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mo>−</mo><mn>2.53</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.0057 (C)</span></p></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">م14</span><h3>السيارات المعيبة</h3><span class="qtag">نسبة وفرق نسبتين</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>A</mi></msub><mo>=</mo><mn>0.08</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>p</mi><mi>B</mi></msub><mo>=</mo><mn>0.06</mn></mrow></semantics></math></span>، وكل عينة 200. نرمز <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>B</mi></msub></mrow></semantics></math></span>.</p>
+    <ul class="asks">
+      <li><span class="k">1</span><span>متوسط <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>A</mi></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">2</span><span>الخطأ المعياري لـ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>A</mi></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">3</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>A</mi></msub><mo>&lt;</mo><mn>0.07</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">4</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>B</mi></msub><mo>&lt;</mo><mn>0.06</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">5</span><span>متوسط D وخطؤه المعياري</span></li>
+      <li><span class="k">6</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>D</mi><mo>≥</mo><mn>0.03</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">7</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0.02</mn><mo>≤</mo><mi>D</mi><mo>≤</mo><mn>0.03</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>A</mi></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>p</mi><mi>A</mi></msub></mrow></semantics></math></span> <span class="ans">0.08 (B)</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mfrac><mrow><mn>0.08</mn><mo>×</mo><mn>0.92</mn></mrow><mn>200</mn></mfrac></msqrt><mo>=</mo><mn>0.0192</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.019 (D)</span></p></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>&lt;</mo><mfrac><mrow><mn>0.07</mn><mo>−</mo><mn>0.08</mn></mrow><mn>0.0192</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mo>−</mo><mn>0.52</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.3015 (C)</span></p></li>
+        <li data-n="4">0.06 هي المتوسط. <span class="ans">0.5 (C)</span></li>
+        <li data-n="5"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mo>=</mo><mn>0.08</mn><mo>−</mo><mn>0.06</mn><mo>=</mo><mn>0.02</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo>=</mo><msqrt><mrow><mn>0.000368</mn><mo>+</mo><mn>0.000282</mn></mrow></msqrt><mo>=</mo><mn>0.0255</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.02, 0.025 (A)</span></p></li>
+        <li data-n="6"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>≥</mo><mfrac><mrow><mn>0.03</mn><mo>−</mo><mn>0.02</mn></mrow><mn>0.025</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>≥</mo><mn>0.40</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.6554</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.3446 (B)</span></p></li>
+        <li data-n="7">طرف 0.02 هو المتوسط، فتبدأ من النص: <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0</mn><mo>≤</mo><mi>Z</mi><mo>≤</mo><mn>0.40</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.6554</mn><mo>−</mo><mn>0.5</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.1554 (A)</span></p></li>
+      </ol>
+      <p class="note">الحل النموذجي كمّل بالـ SE المقرّب 0.025 اللي في خيارات الفقرة 5. لو استخدمت 0.0255 يطلع 0.3483 و 0.1517، والأقرب نفس الخيارين.</p>
+    </div></details>
+  </article>
+
+  <article class="q">
+    <header><span class="qid">م15</span><h3>طلاب KSU و KKU</h3><span class="qtag">متوسط واحد وفرق متوسطين</span></header>
+    <p class="given">المعطى: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>=</mo><mn>87</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>40</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>82</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mn>7</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>45</mn></mrow></semantics></math></span>. نرمز <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub></mrow></semantics></math></span>.</p>
+    <ul class="asks">
+      <li><span class="k">1</span><span>متوسط D</span></li>
+      <li><span class="k">2</span><span>تباين D</span></li>
+      <li><span class="k">3</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>D</mi><mo>&gt;</mo><mn>7</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">4</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>D</mi><mo>&lt;</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">5</span><span>توزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub></mrow></semantics></math></span></span></li>
+      <li><span class="k">6</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>&lt;</mo><mn>85</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+      <li><span class="k">7</span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>85</mn><mo>&lt;</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>&lt;</mo><mn>87</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span></li>
+    </ul>
+    <details class="sol"><summary>الحل</summary><div class="sol-body">
+      <p class="sign"><b>العلامة:</b> هنا σ معطاة انحراف معياري (5 و 7)، فتربّعها داخل التباين. عكس م3.</p>
+      <ol class="steps">
+        <li data-n="1"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>87</mn><mo>−</mo><mn>82</mn></mrow></semantics></math></span> <span class="ans">5 (B)</span></li>
+        <li data-n="2"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo>=</mo><mfrac><mn>25</mn><mn>40</mn></mfrac><mo>+</mo><mfrac><mn>49</mn><mn>45</mn></mfrac><mo>=</mo><mn>0.625</mn><mo>+</mo><mn>1.0889</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">1.71 (C)</span></p></li>
+        <li data-n="3"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>&gt;</mo><mfrac><mrow><mn>7</mn><mo>−</mo><mn>5</mn></mrow><mn>1.3092</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mn>1.53</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.9370</mn></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.0630 (C)</span></p></li>
+        <li data-n="4">5 هي المتوسط. <span class="ans">0.5 (C)</span></li>
+        <li data-n="5"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>∼</mo><mi>N</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mn>87</mn><mo separator="true">,</mo><mtext> </mtext><mfrac><mn>5</mn><msqrt><mn>40</mn></msqrt></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>N</mi><mo stretchy="false">(</mo><mn>87</mn><mo separator="true">,</mo><mtext> </mtext><mn>0.79</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">(A)</span></p></li>
+        <li data-n="6"><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>Z</mi><mo>&lt;</mo><mfrac><mrow><mn>85</mn><mo>−</mo><mn>87</mn></mrow><mn>0.7906</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mo>−</mo><mn>2.53</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span><p class="res">الجواب <span class="ans">0.0057 (D)</span></p></li>
+        <li data-n="7">87 هي المتوسط: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn><mo>−</mo><mn>0.0057</mn></mrow></semantics></math></span> <span class="ans">0.4943 (B)</span></li>
+      </ol>
+    </div></details>
+  </article>
+
+  <div class="callout info">
+    <span class="callout-title">وش تعلّمنا المراجعة عن شكل الأسئلة</span>
+    <ul>
+      <li>كل سؤال مقسوم فقرات: المتوسط، ثم الخطأ المعياري أو التباين، ثم احتمال أو اثنين.</li>
+      <li>«الاحتمال عند المتوسط = 0.5» جاء 3 مرات (م2 و م14 و م15)، و«يساوي بالضبط = 0» مرة.</li>
+      <li>الخيارات أحيانًا مبنية على SE مقرّب (0.05 و 0.025). إذا طلع جوابك قريب ومو مطابق، اختر الأقرب.</li>
+      <li>التوزيع ينكتب في الخيارات بالخطأ المعياري: <span dir="ltr">Normal(0.2, 0.05)</span>، و «<span dir="ltr">87 and 0.79</span>».</li>
+      <li>سؤال F جاء بصيغة: أوجد k إذا <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup><mo>&lt;</mo><mi>k</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="missing" aria-labelledby="h-missing">
+  <div class="sec-head"><span class="eyebrow">من السلايدات</span><h2 id="h-missing">الأقسام اللي ما غطتها المذكرة</h2></div>
+  <p>هذي موجودة في السلايدات وملخص شغوف، ومو في مذكرة الدكتور. الطريقة في <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> و F وحدة: اضرب طرفي المتباينة عشان تطلع الإحصاءة، اقرأ الجدول من جهة «أكبر من»، ثم ارجع للمجهول.</p>
+
+  <div class="q">
+    <header><h3>تباين العينة <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span></h3><span class="qtag">جدول <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span></span></header>
+    <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mi>S</mi><mn>2</mn></msup></mrow><msup><mi>σ</mi><mn>2</mn></msup></mfrac><mo>∼</mo><msup><mi>χ</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span>
+    <p class="given">مثال السلايدات: عينة حجمها 10 من <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mn>30</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>، يعني <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mn>30</mn></mrow></semantics></math></span> والعامل <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><msup><mi>σ</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mn>9</mn><mn>30</mn></mfrac></mrow></semantics></math></span>.</p>
+    <ol class="steps">
+      <li data-n="1"><p>أوجد c إذا <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msup><mi>S</mi><mn>2</mn></msup><mo>≤</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.90</mn></mrow></semantics></math></span>:</p><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><msup><mi>χ</mi><mn>2</mn></msup><mo>≤</mo><mfrac><mrow><mn>9</mn><mi>c</mi></mrow><mn>30</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.90</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⇒</mo><mtext> </mtext><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><msup><mi>χ</mi><mn>2</mn></msup><mo>&gt;</mo><mfrac><mrow><mn>9</mn><mi>c</mi></mrow><mn>30</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.10</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mn>9</mn><mi>c</mi></mrow><mn>30</mn></mfrac><mo>=</mo><msubsup><mi>χ</mi><mn>0.10</mn><mn>2</mn></msubsup><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>14.684</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>c</mi><mo>=</mo><mn>14.684</mn><mo>×</mo><mfrac><mn>30</mn><mn>9</mn></mfrac><mo>=</mo><mn>48.947</mn></mrow></semantics></math></span></span></li>
+      <li data-n="2"><p><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msup><mi>S</mi><mn>2</mn></msup><mo>&gt;</mo><mn>27.8</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>: اضرب في 9/30 يطلع 8.34، ومن الجدول <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>χ</mi><mn>0.50</mn><mn>2</mn></msubsup><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8.343</mn></mrow></semantics></math></span>.</p><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msup><mi>S</mi><mn>2</mn></msup><mo>&gt;</mo><mn>27.8</mn><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><msup><mi>χ</mi><mn>2</mn></msup><mo>&gt;</mo><mn>8.34</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.50</mn></mrow></semantics></math></span></span></li>
+    </ol>
+  </div>
+
+  <div class="q">
+    <header><h3>نسبة تباينين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow></semantics></math></span></h3><span class="qtag">جدول F</span></header>
+    <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><mrow><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup></mrow><mrow><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup></mrow></mfrac><mo>=</mo><mfrac><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mfrac><mo>⋅</mo><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup></mfrac></mrow></semantics></math></span></span>
+    <p>بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow></semantics></math></span> للبسط و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mn>2</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn></mrow></semantics></math></span> للمقام، بهذا الترتيب. لاحظ إن نسبة σ تنقلب.</p>
+    <p class="given">مثال السلايدات: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>=</mo><mn>10</mn><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>2</mn></msub><mo>=</mo><mn>8</mn></mrow></semantics></math></span> من <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><msub><mi>μ</mi><mn>1</mn></msub><mo separator="true">,</mo><mn>25</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><msub><mi>μ</mi><mn>2</mn></msub><mo separator="true">,</mo><mn>36</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>. أوجد c إذا <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup><mo>&lt;</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span>.</p>
+    <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mi>F</mi><mo>&lt;</mo><mfrac><mrow><mn>36</mn><mi>c</mi></mrow><mn>25</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span></span><span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⇒</mo><mtext> </mtext><mfrac><mrow><mn>36</mn><mi>c</mi></mrow><mn>25</mn></mfrac><mo>=</mo><msub><mi>f</mi><mn>0.05</mn></msub><mo stretchy="false">(</mo><mn>9</mn><mo separator="true">,</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3.68</mn></mrow></semantics></math></span></span>
+    <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>c</mi><mo>=</mo><mn>3.68</mn><mo>×</mo><mfrac><mn>25</mn><mn>36</mn></mfrac><mo>=</mo><mn>2.56</mn></mrow></semantics></math></span></span>
+    <p class="muted small">نفس طريقة م1 في المراجعة بالضبط.</p>
+  </div>
+
+  <div class="two">
+    <div class="box">
+      <h3>حالات t (تعرّف عليها)</h3>
+      <p>متوسط واحد، والمجتمع طبيعي، و σ مجهولة:</p>
+      <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>S</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow></mfrac><mo>∼</mo><mi>t</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></semantics></math></span></span>
+      <p>متوسطين و σ مجهولة لكن متساوية:</p>
+      <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>S</mi><mi>p</mi><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mo stretchy="false">(</mo><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mrow><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>2</mn></mrow></mfrac></mrow></semantics></math></span></span>
+      <p class="small">ثم T بدرجات حرية <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>2</mn></mrow></semantics></math></span>. في الفصل الثالث يكفيك تعرف متى تستخدمها. <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>p</mi><mn>2</mn></msubsup></mrow></semantics></math></span> بتحتاجه بقوة في الفصل الرابع (المراجعة 4 و 11).</p>
+    </div>
+    <div class="box">
+      <h3>القسم 1: التعاريف</h3>
+      <p>المجتمع والعينة والإحصاءة، وقوانين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></mrow></semantics></math></span> والوسيط و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span>:</p>
+      <span class="katex-display"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false">(</mo><msub><mi>X</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></semantics></math></span></span>
+      <p class="small">قراءة سريعة تكفي. اشتقاقات السلايدات (مثل إثبات <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover></msub><mo>=</mo><mi>μ</mi></mrow></semantics></math></span>) ما تحتاج تحفظها.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pitfalls" aria-labelledby="h-pit">
+  <div class="sec-head"><span class="eyebrow">انتبه</span><h2 id="h-pit">الأخطاء اللي تضيّع الدرجة</h2></div>
+  <ul class="pitfalls">
+    <li><b>n يتغير داخل نفس السؤال</b>في س1: 5 ثم 16 ثم 9. أشهر غلطة إنك تكمل بـ n القديم.</li>
+    <li><b>σ ولا σ²؟</b>إذا السؤال عطاك التباين (<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow></semantics></math></span> في م3، أو <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mn>36</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> في م1) لا تربّعه. وإذا عطاك الانحراف (σ = 5 في م15) ربّعه داخل التباين.</li>
+    <li><b>التباينات تنجمع حتى في الفرق</b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Var</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo><mo>=</mo><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><mi mathvariant="normal">/</mi><msub><mi>n</mi><mn>2</mn></msub></mrow></semantics></math></span>. الإشارة بينهم موجبة دايم.</li>
+    <li><b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow></semantics></math></span> مو σ</b>في Z لمتوسط العينة استخدم الخطأ المعياري. <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>σ</mi></mrow></semantics></math></span> هذي لقيمة وحدة من الفصل الثاني.</li>
+    <li><b>الرقم الثاني في <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mtext> </mtext><mi>b</mi><mo stretchy="false">)</mo></mrow></semantics></math></span></b>المذكرة: b انحراف معياري. ملخص شغوف: b تباين. المراجعة: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mn>36</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> للمجتمع تباين، و <span dir="ltr">Normal(0.2, 0.05)</span> للتوزيع خطأ معياري. احسب الاثنين وطابق.</li>
+    <li><b>ترتيب الطرح في الأسئلة الكلامية</b>«متوسط التيرير يزيد عن البودل بأقل من 44.2» تعني <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mn>2</mn></msub><mo>&lt;</mo><mn>44.2</mn></mrow></semantics></math></span>. اكتب الرموز قبل الأرقام.</li>
+    <li><b>التقريب</b>قرّب Z لخانتين لأن الجدول كذا، لكن خلّ SE بأربع خانات. في س5: SE = 0.04 بدل 0.0433 يغيّر الجواب من 0.1251 إلى 0.1056.</li>
+    <li><b>اتجاه الجداول</b>Z يعطي «أقل من»، و t و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> و F تعطي «أكبر من». في م1: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>F</mi><mo>&lt;</mo><mo>⋅</mo><mo stretchy="false">)</mo><mo>=</mo><mn>0.95</mn></mrow></semantics></math></span> تقرأه عند 0.05.</li>
+    <li><b>درجات حرية F بالترتيب</b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>9</mn><mo separator="true">,</mo><mn>14</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> مو <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>14</mn><mo separator="true">,</mo><mn>9</mn><mo stretchy="false">)</mo></mrow></semantics></math></span>. البسط للعينة الأولى.</li>
+    <li><b>النسب</b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>1</mn><mo>−</mo><mi>p</mi></mrow></semantics></math></span>، و p من النسبة المئوية (25% = 0.25) أو من x/n (90 من 150 = 0.6). والتباين <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>q</mi><mi mathvariant="normal">/</mi><mi>n</mi></mrow></semantics></math></span> بدون تربيع.</li>
+    <li><b>البحث العكسي</b>في س1(6): <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&gt;</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.1492</mn></mrow></semantics></math></span> حوّلها لـ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.8508</mn></mrow></semantics></math></span> قبل ما تدور في الجدول.</li>
+    <li><b>الحاسبة</b>إذا حاسبتك تحسب التوزيع الطبيعي مباشرة، بتطلع لك خانة رابعة مختلفة عن الجدول (س3: 0.8470 بدل 0.8461). اختر الأقرب.</li>
+    <li><b>شروط النسب</b>المذكرة: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>p</mi><mo>&gt;</mo><mn>5</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>q</mi><mo>&gt;</mo><mn>5</mn></mrow></semantics></math></span>. السلايدات: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>p</mi><mo>≥</mo><mn>5</mn></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>q</mi><mo>≥</mo><mn>5</mn></mrow></semantics></math></span>. إذا انسألت عن الشروط، اذكرها مثل ما درّسها الدكتور.</li>
+  </ul>
+</section>
+
+<section id="hard" aria-labelledby="h-hard">
+  <div class="sec-head"><span class="eyebrow">المعقد</span><h2 id="h-hard">من الأصعب للأسهل، وكيف تروّضه</h2></div>
+  <ol class="rank">
+    <li><b>سؤال F</b><span class="tame">أربع كميات، ونسبة σ مقلوبة، ودرجات حرية بالترتيب، وتحويل «أقل من» لـ «أكبر من». وفوق هذا مو في المذكرة. روّضه: اكتب القالب <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><msubsup><mi>S</mi><mn>1</mn><mn>2</mn></msubsup><msubsup><mi>S</mi><mn>2</mn><mn>2</mn></msubsup></mfrac><mo>⋅</mo><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup></mfrac></mrow></semantics></math></span> أول، ثم عوّض.</span></li>
+    <li><b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> لـ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mn>2</mn></msup></mrow></semantics></math></span></b><span class="tame">نفس فكرة F لكن أخف. روّضه: اضرب الطرفين في <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msup><mi>σ</mi><mn>2</mn></msup></mrow></semantics></math></span>.</span></li>
+    <li><b>البحث العكسي (أوجد a)</b><span class="tame">من احتمال إلى z إلى قيمة. روّضه: حوّل لـ «أقل من» أول، ثم <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>μ</mi><mo>+</mo><mi>z</mi><mo>⋅</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow></mrow></semantics></math></span>.</span></li>
+    <li><b>ترجمة الكلام</b><span class="tame">يزيد بأقل من، على الأقل، على الأكثر. روّضه: اكتب المتغير والمتباينة بالرموز قبل أي رقم.</span></li>
+    <li><b>الباقي</b><span class="tame">المتوسط والتباين والاحتمال المباشر روتيني. هذي نقاط مضمونة، لا تستعجل فيها.</span></li>
+  </ol>
+
+  <div class="sec-head" style="margin-top:14px"><span class="eyebrow">الاختصارات</span><h2>اللي يوفر عليك وقت</h2></div>
+  <ul class="plain">
+    <li><b>سطر واحد وقاعدتين بدل 12 قانون.</b> احفظ <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>∼</mo><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mtext> </mtext><mi>σ</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow></semantics></math></span>. للنسبة بدّل <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>→</mo><mi>p</mi></mrow></semantics></math></span> و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>→</mo><mi>p</mi><mi>q</mi></mrow></semantics></math></span>. وللفرق اطرح المتوسطات واجمع التباينات.</li>
+    <li><b>احسب Var مرة وحدة.</b> منها SE بالجذر، والتوزيع <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>E</mi><mo separator="true">,</mo><mtext> </mtext><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">E</mi></mrow><mo stretchy="false">)</mo></mrow></semantics></math></span>. ثلاث فقرات بحساب واحد.</li>
+    <li><b>القيمة = المتوسط؟ الاحتمال 0.5</b> بدون أي حساب، سواء «أقل» أو «أكبر». و «يساوي بالضبط» = 0.</li>
+    <li><b>«بين» وأحد طرفيها المتوسط</b> = قيمة الجدول ناقص 0.5 (م14 و م15).</li>
+    <li><b>فحص الـ 0.5 لاستبعاد الخيارات.</b> إذا القيمة فوق المتوسط والسؤال «أقل من»، الجواب أكبر من 0.5. مثال: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>X</mi><mo>ˉ</mo></mover><mo>&gt;</mo><mn>52</mn><mo stretchy="false">)</mo></mrow></semantics></math></span> والمتوسط 55، فالجواب لازم فوق 0.5 (طلع 0.9918).</li>
+    <li><b><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> و F نفس الحركة:</b> اضرب، اقرأ الجدول من جهة «أكبر من»، ارجع للمجهول.</li>
+    <li><b>خزّن SE في ذاكرة الحاسبة</b> بدل ما تعيد كتابته في كل فقرة.</li>
+    <li><b>اللي تقدر تتجاهله:</b> ص56 في المذكرة تكرار لجدول ص48، والاشتقاقات في السلايدات ما تنحفظ.</li>
+  </ul>
+</section>
+
+<section id="plan" aria-labelledby="h-plan">
+  <div class="sec-head"><span class="eyebrow">الوقت</span><h2 id="h-plan">كم تحتاج، وبأي ترتيب</h2></div>
+  <p><b>الكامل:</b> حوالي 3 ساعات و 20 دقيقة شغل، يعني 3.5 إلى 4 ساعات مع استراحات قصيرة. <b>الحد الأدنى</b> إذا وقتك ضيق: ساعتين.</p>
+  <ol class="plan">
+    <li><span class="t">20 د</span><span><b>الأساس.</b> «الفكرة الواحدة» و«شجرة القرار» واتجاه الجداول.</span></li>
+    <li><span class="t">40 د</span><span><b>متوسط واحد.</b> س1 و س2 من المذكرة، وركّز على البحث العكسي في س1(6).</span></li>
+    <li><span class="t">35 د</span><span><b>متوسطين ونسب.</b> س3 إلى س6.</span></li>
+    <li><span class="t">40 د</span><span><b>الناقص من المذكرة.</b> <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> و F من السلايدات، والتعرف على t و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>S</mi><mi>p</mi><mn>2</mn></msubsup></mrow></semantics></math></span>.</span></li>
+    <li><span class="t">45 د</span><span><b>المراجعة.</b> م1 و م2 و م3 و م14 و م15، بوقت وبدون فتح الحل.</span></li>
+    <li><span class="t">20 د</span><span><b>تصحيح الأخطاء.</b> كل غلطة صنّفها: اختيار الجدول، أو القانون، أو الحساب، أو قراءة الجدول. وارجع للنوع اللي تكرر بس.</span></li>
+    <li class="total"><span class="t">200 د</span><span><b>المجموع</b> بدون استراحات.</span></li>
+  </ol>
+  <div class="two">
+    <div class="box">
+      <h3>النسخة المختصرة (ساعتين)</h3>
+      <ul class="plain">
+        <li>15 د: الأساس.</li>
+        <li>45 د: س1 و س3 و س5 و س6، نموذج لكل قسم.</li>
+        <li>25 د: F و <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span>، الطريقة ومثال لكل واحد.</li>
+        <li>35 د: المراجعة م1 و م2 و م14 و م15.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>قبل تبدأ ومتى تخلص</h3>
+      <p>إذا جدول Z (خصوصًا البحث العكسي) مو ثابت عندك، زِد 30 إلى 45 دقيقة للفصل الثاني قبل الخطة.</p>
+      <p><b>تعرف إنك خلصت</b> إذا حليت أسئلة المراجعة الخمسة بدون ما تفتح شي، وقبل أي حساب تقدر تقول أي جدول (Z أو t أو <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow></semantics></math></span> أو F) وليش.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>المصادر: صور مذكرة الدكتور (<span dir="ltr">STAT 105 – 17 Dec 2023</span>، ص 48 إلى 56)، و <bdi>Chapter 3.pdf</bdi> (سلايدات القسم)، وملخص شغوف (ملف PDF من صفحتين)، و <bdi>Revision 105 MID II.pdf</bdi>.</p>
+  <p>كل الأرقام تحققت منها بالحساب. قيم جدول Z بأربع خانات، و Z مقرّبة لخانتين مثل المذكرة.</p>
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('button.toggle').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var sec = document.getElementById(btn.getAttribute('data-toggle'));
+    if (!sec) return;
+    var ds = Array.prototype.slice.call(sec.querySelectorAll('details.sol'));
+    var open = !ds.every(function (d) { return d.open; });
+    ds.forEach(function (d) { d.open = open; });
+    btn.textContent = open ? 'اخفِ كل الحلول' : 'اظهر كل الحلول';
+    btn.setAttribute('aria-pressed', String(open));
+  });
+});
+</script>
+
+</body>
+</html>
